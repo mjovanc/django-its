@@ -131,3 +131,5 @@ dmypy.json
 testproject/
 its/migrations/
 manage.py
+
+.idea/
