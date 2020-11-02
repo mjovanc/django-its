@@ -1,3 +1,3 @@
 # Django-ITS
 
-A lightweight Django Issue Tracking System.
+Lightweight Django Issue Tracking System.

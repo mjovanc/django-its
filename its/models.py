@@ -28,6 +28,9 @@ class IssuePriority(models.Model):
 class Issue(models.Model):
     STATUSES = (
         ('Open', _('Open')),
+        ('Reopen', _('Reopen')),
+        ('In Progress', _('In Progress')),
+        ('Fixed', _('Fixed')),
         ('Closed', _('Closed')),
     )
 
@@ -35,7 +38,7 @@ class Issue(models.Model):
     description = models.TextField(verbose_name=_('Description'), max_length=10000)
     priority = models.ForeignKey(IssuePriority, on_delete=models.SET_NULL, null=True)
     type = models.ForeignKey(IssueType, on_delete=models.SET_NULL, null=True)
-    status = models.CharField(verbose_name=_('Title'), max_length=10, choices=STATUSES, default='Open')
+    status = models.CharField(verbose_name=_('Status'), max_length=50, choices=STATUSES, default='Open')
     linked_issues = models.ManyToManyField('self', null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='author_users')
     assigned_to = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='assign_to_users')
